@@ -1,4 +1,5 @@
 from typing import List
+import random
 
 class Task:
     description: str
@@ -13,7 +14,17 @@ class TaskLevel:
 
 class TaskCollection:
     levels: List[TaskLevel] = []
+
+    @classmethod
+    def withRNGSeed(cls, rngSeed):
+        random.seed(rngSeed)
+        return cls()
+
     def getTask(self):
-        return self.levels[0].tasks[0].description
+        while True:
+            nextIndex = random.randint(0, len(self.levels[0].tasks) - 1)
+            if self.levels[0].tasks[nextIndex].remaining > 0:
+                self.levels[0].tasks[nextIndex].remaining -= 1;
+                return self.levels[0].tasks[nextIndex].description
     def getCollectionStatus(self):
         return self
