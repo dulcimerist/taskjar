@@ -5,7 +5,7 @@ from domain.TaskBag import TaskBag
 from domain.TaskBagCollection import TaskBagCollection
 
 
-class TestTasks(unittest.TestCase):
+class TestTaskBagCollection(unittest.TestCase):
     def test_getTask_oneLevel_oneTask(self):
         subject = TaskBagCollection([
             TaskBag(0, 0, 0, [

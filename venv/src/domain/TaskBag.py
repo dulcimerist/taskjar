@@ -15,14 +15,17 @@ class TaskBag:
     def __init__(
             self,
             escalate_draws: int = 0,
-            cascade_draws: int = 0,
+            total_cascade_draws: int = 0,
+            remaining_cascade_draws: int = 0,
             shuffle_draws: int = 0,
-            tasks: List[Task] = [],
+            tasks=None,
             rng: Random = Random()
     ):
+        if tasks is None:
+            tasks = []
         self.escalateDraws = escalate_draws
-        self.cascadeDraws = cascade_draws
-        self.totalCascadeDraws = cascade_draws
+        self.totalCascadeDraws = total_cascade_draws
+        self.cascadeDraws = remaining_cascade_draws
         self.shuffleDraws = shuffle_draws
         self.tasks = tasks
         self.rng = rng
@@ -57,6 +60,17 @@ class TaskBag:
         for i in range(self.shuffleDraws):
             returnValue.append(TaskBagControl.SHUFFLE)
         return returnValue
+
+    def __eq__(self, other):
+        for task in self.tasks:
+            if task not in other.tasks:
+                return False
+
+        return len(self.tasks) == len(other.tasks) \
+            and self.escalateDraws == other.escalateDraws \
+            and self.cascadeDraws == other.cascadeDraws \
+            and self.totalCascadeDraws == other.totalCascadeDraws \
+            and self.shuffleDraws == other.shuffleDraws
 
 
 class TaskBagControl(Enum):

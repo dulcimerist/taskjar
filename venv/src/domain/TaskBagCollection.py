@@ -7,7 +7,9 @@ class TaskBagCollection:
     levels: List[TaskBag]
     _handlers = []
 
-    def __init__(self, levels: List[TaskBag] = [], rng: Random = Random()):
+    def __init__(self, levels = None, rng: Random = Random()):
+        if levels is None:
+            levels = []
         self.levels = levels
         for level in self.levels:
             level.rng = rng
@@ -61,3 +63,9 @@ class TaskBagCollection:
     def _shuffle_all_bags(self):
         for level in self.levels:
             level.shuffle()
+
+    def __eq__(self, other):
+        for level in self.levels:
+            if level not in other.levels:
+                return False
+        return len(self.levels) == len(other.levels)
