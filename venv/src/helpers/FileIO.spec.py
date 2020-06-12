@@ -1,7 +1,7 @@
 import unittest
 import os
 from filecmp import cmp
-from FileIO import FileIO
+from helpers.FileIO import FileIO
 from domain.TaskBagCollection import TaskBagCollection
 from domain.TaskBag import TaskBag
 from domain.Task import Task
