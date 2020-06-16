@@ -21,7 +21,7 @@ class TestFileIO(unittest.TestCase):
 
     def tearDown(self) -> None:
         os.system('rm %s' % test_file_location)
-        # os.system('rm %s' % output_file_location)
+        os.system('rm %s' % output_file_location)
 
     def test_parse(self):
         actual: TaskBagCollection = FileIO.parse(test_file_location)
@@ -33,6 +33,3 @@ class TestFileIO(unittest.TestCase):
         FileIO.save(output_file_location, test_collection)
 
         self.assertTrue(cmp(test_file_location, output_file_location))
-
-if __name__ == '__main__':
-    unittest.main()

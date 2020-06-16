@@ -5,13 +5,6 @@ from enum import Enum
 
 
 class TaskBag:
-    tasks: List[Task]
-    escalateDraws: int
-    cascadeDraws: int
-    totalCascadeDraws: int
-    shuffleDraws: int
-    rng: Random
-
     def __init__(
             self,
             escalate_draws: int = 0,

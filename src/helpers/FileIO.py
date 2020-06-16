@@ -34,6 +34,7 @@ class FileIO:
                     int(row[0])
                 ))
 
+        file.close()
         return returnValue
 
     @staticmethod

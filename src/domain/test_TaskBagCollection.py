@@ -8,7 +8,7 @@ from domain.TaskBagCollection import TaskBagCollection
 class TestTaskBagCollection(unittest.TestCase):
     def test_getTask_oneLevel_oneTask(self):
         subject = TaskBagCollection([
-            TaskBag(0, 0, 0, [
+            TaskBag(0, 0, 0, 0, [
                 Task("1")
             ])
         ])
@@ -17,7 +17,7 @@ class TestTaskBagCollection(unittest.TestCase):
 
     def test_getTask_oneLevel_manyTasks(self):
         subject = TaskBagCollection([
-            TaskBag(0, 0, 0, [
+            TaskBag(0, 0, 0, 0, [
                 Task("2a"),
                 Task("2b")
             ])
@@ -28,11 +28,11 @@ class TestTaskBagCollection(unittest.TestCase):
 
     def test_getTask_manyLevels_manyTasks(self):
         subject = TaskBagCollection([
-            TaskBag(2, 0, 0, [
+            TaskBag(2, 0, 0, 0, [
                 Task("3a"),
                 Task("3b")
             ]),
-            TaskBag(0, 0, 0, [
+            TaskBag(0, 0, 0, 0, [
                 Task("3c"),
                 Task("3d")
             ])
@@ -45,7 +45,7 @@ class TestTaskBagCollection(unittest.TestCase):
 
     def test_getTask_multipleDraws(self):
         subject = TaskBagCollection([
-            TaskBag(0, 0, 0, [
+            TaskBag(0, 0, 0, 0, [
                 Task("4a", 2)
             ])
         ])
@@ -57,10 +57,10 @@ class TestTaskBagCollection(unittest.TestCase):
         # Should reset the remaining amount on each task before drawing another one
 
         subject = TaskBagCollection([
-            TaskBag(1, 0, 0, [
+            TaskBag(1, 0, 0, 0, [
                 Task("5a", 2)
             ]),
-            TaskBag(0, 0, 0, [
+            TaskBag(0, 0, 0, 0, [
                 Task("5b")
             ])
         ], Random(1))
@@ -72,19 +72,19 @@ class TestTaskBagCollection(unittest.TestCase):
 
     def test_getTask_cascade(self):
         subject = TaskBagCollection([
-            TaskBag(1, 0, 0, []),
-            TaskBag(1, 0, 0, [
+            TaskBag(1, 0, 0, 0, []),
+            TaskBag(1, 0, 0, 0, [
                 Task("6a"),
                 Task("6b")
             ]),
-            TaskBag(0, 1, 0, [])
+            TaskBag(0, 1, 1, 0, [])
         ], Random(1))
 
         self.assertEqual("6b,6a", subject.get_task())
 
     def test_getTask_shuffle(self):
         subject = TaskBagCollection([
-            TaskBag(0, 0, 1, [
+            TaskBag(0, 0, 0, 1,[
                 Task("6a", 3)
             ])
         ], Random(1))
@@ -97,6 +97,3 @@ class TestTaskBagCollection(unittest.TestCase):
             for task in level.tasks:
                 remainingTasks += task.remaining
         self.assertEqual(2, remainingTasks)
-
-if __name__ == '__main__':
-    unittest.main()
