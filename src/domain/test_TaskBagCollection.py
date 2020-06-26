@@ -97,3 +97,7 @@ class TestTaskBagCollection(unittest.TestCase):
             for task in level.tasks:
                 remainingTasks += task.remaining
         self.assertEqual(2, remainingTasks)
+
+
+if __name__ == '__main__':
+    unittest.main()

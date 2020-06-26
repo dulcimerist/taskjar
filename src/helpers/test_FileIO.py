@@ -17,7 +17,7 @@ test_collection = TaskBagCollection([
 class TestFileIO(unittest.TestCase):
 
     def setUp(self) -> None:
-        os.system('cp example_files/happypath.csv.backup %s' % test_file_location)
+        os.system('cp ../../example_files/happypath.csv.backup %s' % test_file_location)
 
     def tearDown(self) -> None:
         os.system('rm %s' % test_file_location)
@@ -33,3 +33,7 @@ class TestFileIO(unittest.TestCase):
         FileIO.save(output_file_location, test_collection)
 
         self.assertTrue(cmp(test_file_location, output_file_location))
+
+
+if __name__ == '__main__':
+    unittest.main()

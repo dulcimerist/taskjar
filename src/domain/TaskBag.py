@@ -1,5 +1,4 @@
 from domain.Task import Task
-from typing import List
 from random import Random
 from enum import Enum
 

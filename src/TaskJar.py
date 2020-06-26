@@ -5,7 +5,7 @@ from helpers.FileIO import FileIO
 
 
 @click.command()
-@click.option("--file", default="../default", help="Filepath to file containing tasks")
+@click.option("--file", default="./default", help="Filepath to file containing tasks")
 def pick(file):
     tasks: TaskBagCollection = FileIO.parse(file)
     task: str = tasks.get_task()

@@ -1,26 +1,26 @@
 8,0,0,0
 1,1,50 Jumping Jacks
-1,1,20 Crunches
+0,1,20 Crunches
 1,1,10 Burpees
 1,1,15 Bicep Curls
 1,1,1 Minute Plank
 1,1,10 Push-Ups
 1,1,20 Squats
-1,1,20 Lunges Per Leg
+0,1,20 Lunges Per Leg
 
-3,2,2,1
-1,1,Wash Dishes
+3,1,2,1
+0,1,Wash Dishes
 1,1,Dust A Room
 1,1,Vacuum / Broom A Room
-1,1,Go For A Walk
+0,1,Go For A Walk
 1,1,Ride A Bike
 1,1,Sort Recycling
 1,1,Take Out Trash
 
 2,2,2,1
 1,1,Read A Chapter Of A Book
-1,1,Go For A Hike
-1,1,Learn A Song
+0,1,Go For A Hike
+0,1,Learn A Song
 1,1,Make A Thing
 1,1,Try A New Recipe
 1,1,Go Kayaking / Wall Climbing
